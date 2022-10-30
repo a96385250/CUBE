@@ -2,12 +2,10 @@ package com.example.cube.service;
 
 import com.example.cube.dao.CurrencyDao;
 import com.example.cube.dto.Bpi;
-import com.example.cube.dto.Currency;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 

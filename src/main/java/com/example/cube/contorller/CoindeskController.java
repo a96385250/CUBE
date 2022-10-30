@@ -1,12 +1,8 @@
 package com.example.cube.contorller;
 
-import com.example.cube.dao.BpiDao;
-import com.example.cube.dao.CurrencyDao;
 import com.example.cube.model.CurrentInfoData;
 import com.example.cube.model.Time;
-import com.example.cube.service.BpiService;
 import com.example.cube.service.CoindeskService;
-import com.example.cube.service.CurrencyService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -24,23 +20,7 @@ import java.util.*;
 public class CoindeskController {
 
     @Autowired
-    private CurrencyService currencyService;
-
-    @Autowired
-    private BpiService bpiService;
-
-    @Autowired
     private CoindeskService coindeskService;
-
-    @Autowired
-    private PersonsDao personsDao;
-
-    @Autowired
-    private CurrencyDao currencyDao;
-
-    @Autowired
-    private BpiDao bpiDao;
-
 
     @GetMapping("coindesk")
     public String coindesk(Model model) {

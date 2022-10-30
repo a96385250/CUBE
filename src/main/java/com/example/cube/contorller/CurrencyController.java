@@ -26,7 +26,6 @@ public class CurrencyController {
     private BpiService bpiService;
 
 
-
     @GetMapping("currency")
     public String currency(Model model) {
 

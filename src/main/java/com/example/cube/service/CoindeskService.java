@@ -1,7 +1,6 @@
 package com.example.cube.service;
 
 import com.example.cube.dao.CurrencyDao;
-import com.example.cube.dto.Bpi;
 import com.example.cube.dto.Currency;
 import com.example.cube.model.CurrentInfo;
 import com.example.cube.model.CurrentInfoData;
@@ -59,7 +58,7 @@ public class CoindeskService {
                     .code(value.getCode())
                     .codeCH(currencyMapData.get(value.getCode()))
                     .rate(value.getRate())
-                    .rateFloat(value.getRate_float())
+                    .rateFloat(value.getRateFloat())
                     .build();
             currentInfoList.add(currentInfoData);
         });
