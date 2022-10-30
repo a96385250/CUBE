@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script th:inline="javascript">
+        $(function () {
+
+        });
+
+
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <p th:text="'updated : ' + ${#dates.format(timeData.updated, 'yyyy/MM/dd HH:mm:ss')}"></p>
+    <p th:text="'updatedISO : ' + ${timeData.updatedISO}"></p>
+    <p th:text="'updateduk : ' + ${#dates.format(timeData.updateduk, 'yyyy/MM/dd HH:mm:ss')}"></p>
+
+    <hr>
+    <table class="table table-bordered table-header-nowrap table-fubon" id="resultTable">
+        <thead>
+        <tr>
+            <th>幣別</th>
+            <th>幣別中文名稱</th>
+            <th>匯率</th>
+            <th>匯率2</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="data,iter : ${currentInfoList}">
+            <td th:text="${data.code}"></td>
+            <td th:text="${data.codeCH}"></td>
+            <td th:text="${data.rate}"></td>
+            <td th:text="${data.rateFloat}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

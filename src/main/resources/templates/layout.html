@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes"/>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/jquery-ui.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/datatables.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:inline="javascript">
+        var cryptoObj = window.crypto || window.msCrypto;
+
+        function getRandom() {
+            var randomBuffer = new Uint32Array(1);
+            cryptoObj.getRandomValues(randomBuffer);
+            return randomBuffer[0] / (0xFFFFFFFF + 1);
+        }
+    </script>
+    <script th:src="@{/js/jquery-3.3.1.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery-ui.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+    <script th:src="@{/js/datatables.min.js}" type="text/javascript"></script>
+
+    <!-- 非正式使用 js，方便切版專案呈現使用之方法 -->
+    <script th:src="@{/js/datatablesDesign.js}"></script>
+    <script th:inline="javascript">
+    </script>
+</head>
+
+<body>
+<div layout:fragment="content">
+</div>
+<!--    <footer id="copyright" class="footer" style="position: absolute;">-->
+<!--        <p>©富邦銀行版權所有</p>-->
+<!--    </footer>-->
+</div>
+<!--<div>
+    <div class="modal fade bs-example-modal-sm" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="msg">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span id="alertBoxStyle" class="glyphicon glyphicon-ok" aria-hidden="true"></span> <b id="alertBoxMsg"></b>
+                </div>
+            </div>
+            &lt;!&ndash; end .modal-content&ndash;&gt;
+        </div>
+    </div>
+    &lt;!&ndash; end 彈出框框&ndash;&gt;
+</div>-->
+</body>
+</html>

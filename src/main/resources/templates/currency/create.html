@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script th:inline="javascript">
+        $(function () {
+
+            $("#search").click(function (){
+                $("#currencyForm").submit();
+            });
+
+            $("#update").click(function (){
+                const id = [[${data.id}]];
+                $("#dataForm").attr("action", "update-"+id);
+                $("#dataForm").submit();
+            });
+
+            $("#create").click(function (){
+                $("#dataForm").attr("action", "create");
+                $("#dataForm").submit();
+            });
+
+        });
+
+
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <form id="dataForm" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">幣別</label>
+            <div class="col-sm-10">
+                <select id="inputState" class="form-control" name="currency" th:if="${type eq 'create'}">
+                    <option th:each="currency : ${currencyData}"
+                            th:value="${currency}"
+                            th:text="${currency}"
+                    ></option>
+                </select>
+                <input type="text" id="code" name="code" th:value="${data.code}" th:if="${type eq 'update'}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="rate" class="col-sm-2 col-form-label">匯率</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control-plaintext" id="rate" name="rate" th:value="${data.rate}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="desc" class="col-sm-2 col-form-label">描述</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="desc" name="desc" th:value="${data.description}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ratefloat" class="col-sm-2 col-form-label">匯率2</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="ratefloat" name="ratefloat" th:value="${data.ratefloat}">
+            </div>
+        </div>
+        <button type="button" id="create" class="btn btn-primary col-6" th:if="${type eq 'create'}">新增</button>
+        <button type="button" id="update" class="btn btn-primary col-6" th:if="${type eq 'update'}">更新</button>
+    </form>
+</div>
+
+</body>
+</html>

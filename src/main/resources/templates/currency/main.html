@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script th:inline="javascript">
+        $(function () {
+
+            $("#search").click(function (){
+                $("#currencyForm").submit();
+            });
+
+            $("#create").click(function (){
+                $("#createDataForm").submit();
+            });
+
+        });
+
+        function toEdit(th){
+            let id = $(th).data("id");
+            $("#updateId").val(id);
+            $("#updateForm").submit();
+        }
+
+        function toDelete(th){
+            let id = $(th).data("id");
+            $("#deleteForm").attr("action", "delete-"+id);
+            $("#deleteForm").submit();
+        }
+
+
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <form id="updateForm" th:action="@{/updateData}" method="GET">
+        <input type="hidden" id="updateId" name="id" >
+    </form>
+    <form id="deleteForm" method="POST"></form>
+    <form id="createDataForm" th:action="@{/createData}" method="GET"></form>
+    <form id="currencyForm" th:action="@{/search}" method="GET">
+        <fieldset>
+            <legend>幣別維護</legend>
+            <div class="mb-5">
+                <label for="disabledSelect" class="form-label">幣別</label>
+                <select id="disabledSelect" class="form-select" name="currency">
+                    <option value="all">全部</option>
+                    <option th:each="currency : ${currencyList}"
+                            th:value="${currency}"
+                            th:text="${currency}"
+                    ></option>
+                </select>
+            </div>
+
+
+        </fieldset>
+    </form>
+
+    <div class="row mt-5">
+        <button type="button" id="search" class="btn btn-primary col-6">搜尋</button>
+        <button type="button" id="create" class="btn btn-primary col-6" th:disabled="${bpiSize == 3}">新增</button>
+    </div>
+
+
+    <table class="table table-bordered table-header-nowrap table-fubon" id="resultTable">
+        <thead>
+        <tr>
+            <th>幣別</th>
+            <th>匯率</th>
+            <th>敘述</th>
+            <th>匯率2</th>
+            <th>功能</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="data,iter : ${currencyData}">
+                <td th:text="${data.code}"></td>
+                <td th:text="${data.rate}"></td>
+                <td th:text="${data.description}"></td>
+                <td th:text="${data.ratefloat}"></td>
+                <td>
+                    <diV class="row">
+                        <button type="button" class="btn btn-primary col-6" th:attr="data-id=${data.id}" onclick="toEdit(this);">更新</button>
+                        <button type="button" class="btn btn-primary col-6" th:attr="data-id=${data.id}" onclick="toDelete(this);">刪除</button>
+                    </diV>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+
+</body>
+</html>
