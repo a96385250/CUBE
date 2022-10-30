@@ -58,8 +58,9 @@ public class CoindeskService {
                     .code(value.getCode())
                     .codeCH(currencyMapData.get(value.getCode()))
                     .rate(value.getRate())
-                    .rateFloat(value.getRateFloat())
+                    .rateFloat(value.getRate_float())
                     .build();
+
             currentInfoList.add(currentInfoData);
         });
 

@@ -37,8 +37,6 @@ public class CoindeskController {
     @GetMapping("coindeskInfo")
     public String coindeskInfo(Model model) throws JsonProcessingException, ParseException {
 
-
-
         RestTemplate restTemplate = new RestTemplate();
 
         String result = restTemplate.getForObject("https://api.coindesk.com/v1/bpi/currentprice.json", String.class);

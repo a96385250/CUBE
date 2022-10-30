@@ -23,6 +23,6 @@ public class CurrentInfo {
 
     private String description;
 
-    private BigDecimal rateFloat;
+    private BigDecimal rate_float;
 
 }
